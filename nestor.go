@@ -6,6 +6,7 @@ import (
 )
 
 import (
+	"nestor/dockerhelpers"
 	"nestor/githelpers"
 	"nestor/python"
 	"nestor/typescript"
@@ -36,6 +37,17 @@ func git(cmd string) {
 	}
 }
 
+func docker(cmd string) {
+	switch cmd {
+	case "clean":
+		log.Print("Clean docker images")
+		dockerhelpers.Clean()
+	default:
+		log.Fatal("Error: Command not supported, Try `nestor --help` to get more information")
+		os.Exit(1)
+	}
+}
+
 func main() {
 	// output := flag.String("ouput", "./", "Output directory. Default: ./")
 	// flag.Parse()
@@ -45,6 +57,8 @@ func main() {
 		initProject(os.Args[2])
 	case "git":
 		git(os.Args[2])
+	case "docker":
+		docker(os.Args[2])
 
 	default:
 		log.Println("Print HELP") // TODO:
