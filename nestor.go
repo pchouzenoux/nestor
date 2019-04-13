@@ -1,11 +1,12 @@
 package main
 
 import (
-	"fmt"
+	"log"
 	"os"
 )
 
 import (
+	"nestor/githelpers"
 	"nestor/python"
 	"nestor/typescript"
 )
@@ -13,12 +14,24 @@ import (
 func initProject(lang string) {
 	switch lang {
 	case "python":
-		fmt.Println("Init python virtualenv")
+		log.Print("Init python virtualenv")
 		python.InitPythonVirtualEnv()
 	case "typescript":
+		log.Print("Init nodejs with typescript empty project")
 		typescript.InitTypescriptProject()
 	default:
-		fmt.Println("Error: Lang not supporter, Nestor only support values: [python, typescript]")
+		log.Fatal("Error: Lang not supported, Nestor only support values: [python, typescript]")
+		os.Exit(1)
+	}
+}
+
+func git(cmd string) {
+	switch cmd {
+	case "clean":
+		log.Print("Clean git local repository")
+		githelpers.Clean()
+	default:
+		log.Fatal("Error: Command not supported, Try `nestor --help` to get more information")
 		os.Exit(1)
 	}
 }
@@ -30,8 +43,10 @@ func main() {
 	switch os.Args[1] {
 	case "init":
 		initProject(os.Args[2])
+	case "git":
+		git(os.Args[2])
 
 	default:
-		fmt.Println("Print HELP") // TODO:
+		log.Println("Print HELP") // TODO:
 	}
 }

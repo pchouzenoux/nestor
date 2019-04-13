@@ -27,7 +27,7 @@ func InitTypescriptProject() {
 	commons.ToFile(getNvmrcFile())
 	commons.ToFile(getTypescriptEnvFile())
 
-	commons.ExecShellCmd("npm", "init", "-y")
+	commons.ExecShellCmd("npm", "init -y")
 
 	var pkg = npmpack.UnmarshalJsonFile("package.json")
 	pkg.Scripts.Start = `npm run build:live`
@@ -35,9 +35,9 @@ func InitTypescriptProject() {
 	pkg.Scripts.Buildlive = `nodemon --watch src/**/*.ts --exec 'npx ts-node' src/index.ts`
 	npmpack.MarshalJsonFile(pkg, "package.json")
 
-	commons.ExecShellCmd("npm", "install", "--save-dev", "typescript", "@types/node", "nodemon")
+	commons.ExecShellCmd("npm", "install --save-dev typescript @types/node nodemon")
 
-	commons.ExecShellCmd("npx", "tsc", "--init", "--rootDir", "src", "--outDir", "lib", "--esModuleInterop", "--resolveJsonModule", "--lib", "es6,dom", "--module", "commonjs")
+	commons.ExecShellCmd("npx", "tsc --init --rootDir src --outDir lib --esModuleInterop --resolveJsonModule --lib es6,dom --module commonjs")
 
 	commons.ExecShellCmd("mkdir", "src/")
 
