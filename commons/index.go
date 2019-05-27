@@ -7,32 +7,27 @@ import (
 	"strings"
 )
 
-func ReadFile(filepath string) string {
+func ReadFile(filepath string) (string, error) {
 	data, err := ioutil.ReadFile(filepath)
 
 	if err != nil {
-		log.Fatal(err)
-		panic(err)
+		return "", err
 	}
 
-	return string(data)
+	return string(data), nil
 }
 
-func ToFile(filepath string, filecontent []byte) {
+func ToFile(filepath string, filecontent []byte) error {
 	err := ioutil.WriteFile(filepath, filecontent, 0644)
-	if err != nil {
-		panic(err)
-	}
+	return err
 }
 
-func AppendToFile(filepath string, filecontent []byte) {
+func AppendToFile(filepath string, filecontent []byte) error {
 	err := ioutil.WriteFile(filepath, filecontent, 0644)
-	if err != nil {
-		panic(err)
-	}
+	return err
 }
 
-func ExecShellCmd(command string, args string) string {
+func ExecShellCmd(command string, args string) (string, error) {
 	splitArgs := strings.Split(args, " ")
 
 	log.Printf("> %s %s", command, args)
@@ -41,8 +36,8 @@ func ExecShellCmd(command string, args string) string {
 
 	stdout, err := cmd.CombinedOutput()
 	if err != nil {
-		panic(err)
+		return string(stdout), err
 	}
 
-	return string(stdout)
+	return string(stdout), nil
 }

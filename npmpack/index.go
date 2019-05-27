@@ -35,7 +35,7 @@ type Package struct {
 
 func UnmarshalJsonFile(filepath string) Package {
 	var pkg Package
-	var jsonData = commons.ReadFile(filepath)
+	var jsonData, _ = commons.ReadFile(filepath)
 	json.Unmarshal([]byte(jsonData), &pkg)
 	return pkg
 }

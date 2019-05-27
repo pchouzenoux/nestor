@@ -13,7 +13,8 @@ func getTypescriptEnvFile() (string, []byte) {
 }
 
 func getNvmrcFile() (string, []byte) {
-	return ".nvmrc", []byte(commons.ExecShellCmd("node", "-v"))
+	stdout, _ := commons.ExecShellCmd("node", "-v")
+	return ".nvmrc", []byte(stdout)
 }
 
 func appendToGitIgnore() (string, []byte) {

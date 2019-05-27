@@ -21,9 +21,11 @@ func branchIsExcluded(branch string) bool {
 }
 
 func Clean() {
-	log.Printf(commons.ExecShellCmd("git", "remote prune origin"))
+	result, err := commons.ExecShellCmd("git", "branch")
 
-	result := commons.ExecShellCmd("git", "branch")
+	if err != nil {
+		panic(err)
+	}
 
 	branches := strings.Split(result, "\n")
 	for _, branch := range branches {
@@ -31,6 +33,9 @@ func Clean() {
 		if branch == "" || strings.HasPrefix(branch, "*") || branchIsExcluded(branch) {
 			continue
 		}
-		log.Printf(commons.ExecShellCmd("git", "branch -d "+branch))
+		stdout, _ := commons.ExecShellCmd("git", "branch -d "+branch)
+		log.Printf(stdout)
 	}
+	stdout, _ := commons.ExecShellCmd("git", "remote prune origin")
+	log.Printf(stdout)
 }

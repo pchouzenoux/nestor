@@ -6,7 +6,7 @@ import (
 )
 
 func Clean() {
-	result := commons.ExecShellCmd("docker", "ps -aq --no-trunc -f status=exited")
+	result, _ := commons.ExecShellCmd("docker", "ps -aq --no-trunc -f status=exited")
 
 	for _, dockerImg := range strings.Split(result, "\n") {
 		dockerImg = strings.Trim(dockerImg, "")
