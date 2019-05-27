@@ -6,7 +6,7 @@ import (
 )
 
 import (
-	"nestor/commons"
+	"github.com/Nehorim/nestor/commons"
 )
 
 var excludedBranches = []string{"dev", "prod", "master"}

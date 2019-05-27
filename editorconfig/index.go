@@ -2,7 +2,9 @@ package editorconfig
 
 import (
 	"log"
-	"nestor/commons"
+)
+import (
+	"github.com/Nehorim/nestor/commons"
 )
 
 var FileContent []byte = []byte(

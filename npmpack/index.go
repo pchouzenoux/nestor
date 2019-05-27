@@ -4,7 +4,7 @@ import (
 	"encoding/json"
 )
 import (
-	"nestor/commons"
+	"github.com/Nehorim/nestor/commons"
 )
 
 type PackageRepository struct {

@@ -1,8 +1,8 @@
 package typescript
 
 import (
-	"nestor/commons"
-	"nestor/npmpack"
+	"github.com/Nehorim/nestor/commons"
+	"github.com/Nehorim/nestor/npmpack"
 )
 
 func getTypescriptEnvFile() (string, []byte) {

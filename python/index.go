@@ -2,7 +2,9 @@ package python
 
 import (
 	"log"
-	"nestor/commons"
+)
+import (
+	"github.com/Nehorim/nestor/commons"
 )
 
 func getPythonEnvFile() (string, []byte) {

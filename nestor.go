@@ -7,10 +7,10 @@ import (
 )
 
 import (
-	"nestor/dockerhelpers"
-	"nestor/githelpers"
-	"nestor/python"
-	"nestor/typescript"
+	"github.com/Nehorim/nestor/dockerhelpers"
+	"github.com/Nehorim/nestor/githelpers"
+	"github.com/Nehorim/nestor/python"
+	"github.com/Nehorim/nestor/typescript"
 )
 
 func initProject(lang string) {

@@ -1,8 +1,10 @@
 package dockerhelpers
 
 import (
-	"nestor/commons"
 	"strings"
+)
+import (
+	"github.com/Nehorim/nestor/commons"
 )
 
 func Clean() {
