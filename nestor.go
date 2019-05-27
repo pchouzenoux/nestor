@@ -1,6 +1,7 @@
 package main
 
 import (
+	"fmt"
 	"log"
 	"os"
 )
@@ -32,7 +33,7 @@ func git(cmd string) {
 		log.Print("Clean git local repository")
 		githelpers.Clean()
 	default:
-		log.Fatal("Error: Command not supported, Try `nestor --help` to get more information")
+		log.Fatal("Error: Command not supported, Try `nestor help` to get more information")
 		os.Exit(1)
 	}
 }
@@ -43,15 +44,31 @@ func docker(cmd string) {
 		log.Print("Clean docker images")
 		dockerhelpers.Clean()
 	default:
-		log.Fatal("Error: Command not supported, Try `nestor --help` to get more information")
+		log.Fatal("Error: Command not supported, Try `nestor help` to get more information")
 		os.Exit(1)
 	}
+}
+
+func help() {
+	fmt.Println("Nestor, your personal butler!")
+	fmt.Println("Version: 0.0.1")
+	fmt.Println("\nUSAGE:")
+	fmt.Println("    nestor <command> <args>")
+	fmt.Println("\nCOMMANDS:")
+	fmt.Println("    - help    : Print this help")
+	fmt.Println("    - init    : Initialize a local project. Args: `python` or `typescript`")
+	fmt.Println("    - git     : Git helpers. Args: `clean`")
+	fmt.Println("    - docker  : Docker helpers. Args: `clean`")
 }
 
 func main() {
 	// output := flag.String("ouput", "./", "Output directory. Default: ./")
 	// flag.Parse()
 
+	if len(os.Args) != 2 {
+		help()
+		return
+	}
 	switch os.Args[1] {
 	case "init":
 		initProject(os.Args[2])
@@ -59,8 +76,7 @@ func main() {
 		git(os.Args[2])
 	case "docker":
 		docker(os.Args[2])
-
 	default:
-		log.Println("Print HELP") // TODO:
+		help()
 	}
 }
