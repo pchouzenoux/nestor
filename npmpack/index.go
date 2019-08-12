@@ -16,9 +16,12 @@ type PackageBugs struct {
 }
 type PackageScripts struct {
 	Test      string `json:"test"`
+	TestWatch string `json:"test:watch"`
 	Start     string `json:"start"`
 	Build     string `json:"build"`
 	Buildlive string `json:"build:live"`
+	Lint      string `json:"lint"`
+	LintFix   string `json:"lint:fix"`
 }
 type Package struct {
 	Name        string            `json:"name"`
