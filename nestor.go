@@ -51,7 +51,7 @@ func docker(cmd string) {
 
 func help() {
 	fmt.Println("Nestor, your personal butler!")
-	fmt.Println("Version: 0.0.1")
+	fmt.Println("Version: 0.0.2")
 	fmt.Println("\nUSAGE:")
 	fmt.Println("    nestor <command> <args>")
 	fmt.Println("\nCOMMANDS:")

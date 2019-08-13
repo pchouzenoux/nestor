@@ -18,5 +18,6 @@ func Clean() {
 		commons.ExecShellCmd("docker", "rm "+dockerImg)
 	}
 
-	commons.ExecShellCmd("docker", "image prune -f")
+	commons.ExecShellCmd("docker", "system prune -f")
+	commons.ExecShellCmd("docker", "volume prune -f")
 }
