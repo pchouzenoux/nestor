@@ -1,4 +1,4 @@
-package githelpers
+package git
 
 import (
 	"log"

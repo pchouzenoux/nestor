@@ -1,4 +1,4 @@
-package tsconfig
+package typescript
 
 import (
 	"encoding/json"
@@ -7,7 +7,7 @@ import (
 	"github.com/Nehorim/nestor/commons"
 )
 
-type CompilerOptions struct {
+type TSCompilerOptions struct {
 	OutDir                           string   `json:"outDir"`
 	Target                           string   `json:"target"`
 	Lib                              []string `json:"lib"`
@@ -27,21 +27,21 @@ type CompilerOptions struct {
 }
 
 type TSConfig struct {
-	CompilerOptions  CompilerOptions   `json:"compilerOptions"`
+	CompilerOptions  TSCompilerOptions   `json:"compilerOptions"`
 	Files            []string          `json:"files"`
 	Include          []string          `json:"include"`
 	Exclude          []string          `json:"exclude"`
 
 }
 
-func UnmarshalJsonFile(filepath string) TSConfig {
+func UnmarshalTSConfigFile(filepath string) TSConfig {
 	var file TSConfig
 	var jsonData, _ = commons.ReadFile(filepath)
 	json.Unmarshal([]byte(jsonData), &file)
 	return file
 }
 
-func MarshalJsonFile(pkg TSConfig, filepath string) {
+func MarshalTSConfigFile(pkg TSConfig, filepath string) {
 	result, err := json.MarshalIndent(pkg, "", "  ")
 	if err != nil {
 		panic(err)

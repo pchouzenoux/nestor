@@ -1,4 +1,4 @@
-package npmpack
+package typescript
 
 import (
 	"encoding/json"
@@ -36,14 +36,14 @@ type Package struct {
 	Repository  PackageRepository `json:"repository"`
 }
 
-func UnmarshalJsonFile(filepath string) Package {
+func UnmarshalNPMFile(filepath string) Package {
 	var pkg Package
 	var jsonData, _ = commons.ReadFile(filepath)
 	json.Unmarshal([]byte(jsonData), &pkg)
 	return pkg
 }
 
-func MarshalJsonFile(pkg Package, filepath string) {
+func MarshalNPMFile(pkg Package, filepath string) {
 	result, err := json.MarshalIndent(pkg, "", "  ")
 	if err != nil {
 		panic(err)

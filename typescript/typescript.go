@@ -6,8 +6,6 @@ import (
 
 import (
 	"github.com/Nehorim/nestor/commons"
-	"github.com/Nehorim/nestor/npmpack"
-	"github.com/Nehorim/nestor/tsconfig"
 )
 
 func getTypescriptEnvFile() (string, []byte) {
@@ -32,7 +30,7 @@ node_modules/
 func setUpNpm() {
 	commons.ExecShellCmd("npm", "init -y")
 
-	var pkg = npmpack.UnmarshalJsonFile("package.json")
+	var pkg = UnmarshalNPMFile("package.json")
 	pkg.Scripts.Start = `npm run build:live`
 	pkg.Scripts.Test = `jest --coverage --colors`
 	pkg.Scripts.TestWatch = `jest --watch`
@@ -40,7 +38,7 @@ func setUpNpm() {
 	pkg.Scripts.Buildlive = `nodemon --watch src/**/*.ts --exec 'npx ts-node' src/index.ts`
 	pkg.Scripts.Lint = `tslint -p .`
 	pkg.Scripts.LintFix = `tslint --fix -t verbose -p .`
-	npmpack.MarshalJsonFile(pkg, "package.json")
+	MarshalNPMFile(pkg, "package.json")
 
 	// Install dependencies
 	npmInstallDependencies := []string {
@@ -70,8 +68,8 @@ func setUpNpm() {
 }
 
 func setUpTypescriptConfig() {
-	var tsconfigFile = new(tsconfig.TSConfig)
-	var compilerOptions = new(tsconfig.CompilerOptions)
+	var tsconfigFile = new(TSConfig)
+	var compilerOptions = new(TSCompilerOptions)
 	compilerOptions.OutDir = "./dist"
 	compilerOptions.Target = "esnext"
 	compilerOptions.Lib = []string {"esnext", "esnext.asynciterable"}
@@ -98,7 +96,7 @@ func setUpTypescriptConfig() {
 		"src/**/**.spec.ts",
 		"src/**/__mocks__/**/*",
 	}
-	tsconfig.MarshalJsonFile(*tsconfigFile, "tsconfig.json")
+	MarshalTSConfigFile(*tsconfigFile, "tsconfig.json")
 }
 
 func InitTypescriptProject() {
