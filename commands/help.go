@@ -6,7 +6,7 @@ import (
 
 func Help() {
 	fmt.Println("Nestor, your personal butler!")
-	fmt.Println("Version: 0.0.3")
+	fmt.Println("Version: 0.1.0")
 	fmt.Println("\nUSAGE:")
 	fmt.Println("    nestor <command> <args>")
 	fmt.Println("\nCOMMANDS:")

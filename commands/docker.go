@@ -1,12 +1,9 @@
 package commands
 
-
 import (
 	"log"
 	"os"
-)
 
-import (
 	"github.com/Nehorim/nestor/docker"
 )
 

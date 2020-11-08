@@ -3,9 +3,7 @@ package commands
 import (
 	"log"
 	"os"
-)
 
-import (
 	"github.com/Nehorim/nestor/python"
 	"github.com/Nehorim/nestor/typescript"
 )

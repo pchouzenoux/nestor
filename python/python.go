@@ -2,8 +2,7 @@ package python
 
 import (
 	"log"
-)
-import (
+
 	"github.com/Nehorim/nestor/commons"
 )
 

@@ -2,8 +2,7 @@ package typescript
 
 import (
 	"encoding/json"
-)
-import (
+
 	"github.com/Nehorim/nestor/commons"
 )
 
@@ -27,11 +26,15 @@ type TSCompilerOptions struct {
 }
 
 type TSConfig struct {
-	CompilerOptions  TSCompilerOptions   `json:"compilerOptions"`
-	Files            []string          `json:"files"`
-	Include          []string          `json:"include"`
-	Exclude          []string          `json:"exclude"`
+	CompilerOptions TSCompilerOptions `json:"compilerOptions"`
+	Files           []string          `json:"files"`
+	Include         []string          `json:"include"`
+	Exclude         []string          `json:"exclude"`
+}
 
+type TSConfigBuild struct {
+	Extends string   `json:"files"`
+	Exclude []string `json:"exclude"`
 }
 
 func UnmarshalTSConfigFile(filepath string) TSConfig {
@@ -41,7 +44,9 @@ func UnmarshalTSConfigFile(filepath string) TSConfig {
 	return file
 }
 
-func MarshalTSConfigFile(pkg TSConfig, filepath string) {
+type TSConfigFile interface{}
+
+func MarshalTSConfigFile(pkg TSConfigFile, filepath string) {
 	result, err := json.MarshalIndent(pkg, "", "  ")
 	if err != nil {
 		panic(err)

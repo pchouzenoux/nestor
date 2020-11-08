@@ -3,9 +3,7 @@ package git
 import (
 	"log"
 	"strings"
-)
 
-import (
 	"github.com/Nehorim/nestor/commons"
 )
 

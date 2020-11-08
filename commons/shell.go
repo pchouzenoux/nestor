@@ -6,8 +6,6 @@ import (
 	"strings"
 )
 
-
-
 func ExecShellCmd(command string, args string) (string, error) {
 	splitArgs := strings.Split(args, " ")
 

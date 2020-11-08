@@ -2,8 +2,7 @@ package typescript
 
 import (
 	"encoding/json"
-)
-import (
+
 	"github.com/Nehorim/nestor/commons"
 )
 
@@ -23,6 +22,14 @@ type PackageScripts struct {
 	Lint      string `json:"lint"`
 	LintFix   string `json:"lint:fix"`
 }
+
+type PackageHuskyHooks struct {
+	PreCommit string `json:"pre-commit"`
+	PrePush   string `json:"pre-push"`
+}
+type PackageHusky struct {
+	Hooks PackageHuskyHooks `json:"hooks"`
+}
 type Package struct {
 	Name        string            `json:"name"`
 	Version     string            `json:"version"`
@@ -34,6 +41,7 @@ type Package struct {
 	Keywords    []string          `json:"keywords"`
 	Scripts     PackageScripts    `json:"scripts"`
 	Repository  PackageRepository `json:"repository"`
+	Husky       PackageHusky      `json:"husky"`
 }
 
 func UnmarshalNPMFile(filepath string) Package {

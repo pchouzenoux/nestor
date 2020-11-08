@@ -2,8 +2,7 @@ package docker
 
 import (
 	"strings"
-)
-import (
+
 	"github.com/Nehorim/nestor/commons"
 )
 
