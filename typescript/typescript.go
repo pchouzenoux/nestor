@@ -109,7 +109,7 @@ func getJestConfigFile() (string, []byte) {
 	var filecontent []byte = []byte(
 		`module.exports = {
   roots: ['<rootDir>/src'],
-  setupFiles: ['reflect-metadata', './test/global.ts'],
+  setupFiles: ['reflect-metadata'],
   transform: {
     '^.+\\.ts?$': 'ts-jest',
   },
