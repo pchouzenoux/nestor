@@ -1,0 +1,27 @@
+# Dependency directories
+node_modules/
+lib/
+
+# IDE - VSCode
+.idea/
+*.kdev4
+.env
+
+# testing
+/coverage
+
+# production
+/build
+
+# misc
+.DS_Store
+npm-debug.log*
+yarn-debug.log*
+yarn-error.log*
+
+# Kubernetes
+kubernetes/deploy/values-*.yaml
+
+# config
+config/local.js
+config/google-key.json

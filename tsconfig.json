@@ -1,0 +1,23 @@
+{
+  "compilerOptions": {
+    "outDir": "./lib",
+    "target": "ESNEXT",
+    "lib": ["ESNEXT"],
+    "allowJs": true,
+    "skipLibCheck": true,
+    "esModuleInterop": true,
+    "emitDecoratorMetadata": true,
+    "experimentalDecorators": true,
+    "allowSyntheticDefaultImports": true,
+    "strict": false,
+    "forceConsistentCasingInFileNames": true,
+    "module": "CommonJS",
+    "moduleResolution": "Node",
+    "resolveJsonModule": true,
+    "isolatedModules": false,
+    "inlineSourceMap": true
+  },
+  "files": ["./node_modules/@types/node/index.d.ts"],
+  "include": ["src/**/*"],
+  "exclude": ["node_modules"]
+}
