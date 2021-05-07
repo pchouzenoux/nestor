@@ -2,7 +2,11 @@
   "name": "nestor",
   "version": "0.0.1",
   "description": "Nestor buttler is here to help you !",
-  "main": "dist/index.js",
+  "main": "lib/index.js",
+  "bin": {
+    "nestor": "./bin/nestor.js"
+  },
+  "preferGlobal": true,
   "license": "MIT",
   "scripts": {
     "test": "jest --coverage --colors",
