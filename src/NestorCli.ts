@@ -2,7 +2,6 @@ import { Service } from 'typedi';
 import yargs from 'yargs';
 import { DockerService } from './docker/DockerService';
 import { GitService } from './git/GitService';
-import { InjectLogger, Logger } from './helpers';
 import args from './CliCommand';
 import { ConsoleLogger } from './utils/ConsoleLogger';
 
@@ -13,7 +12,6 @@ enum Context {
 @Service()
 export class NestorCli {
   constructor(
-    @InjectLogger('NestorCli') private logger: Logger,
     /* @Inject() */ private consoleLogger: ConsoleLogger,
     /* @Inject() */ private gitService: GitService,
     /* @Inject() */ private dockerService: DockerService,

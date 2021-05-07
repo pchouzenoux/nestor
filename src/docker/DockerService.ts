@@ -1,5 +1,4 @@
 import { Service } from 'typedi';
-import { InjectLogger, Logger } from '../helpers';
 import { ConsoleLogger } from '../utils/ConsoleLogger';
 import { execCommand } from '../utils/Shell';
 
@@ -13,10 +12,7 @@ export class DockerNotDefineException extends Error {
 
 @Service()
 export class DockerService {
-  constructor(
-    @InjectLogger('DockerService') private logger: Logger,
-    /* @Inject */ private consoleLogger: ConsoleLogger,
-  ) {}
+  constructor(/* @Inject */ private consoleLogger: ConsoleLogger) {}
 
   public clean(): void {
     if (!this.isDockerDefine()) {
@@ -36,7 +32,6 @@ export class DockerService {
       const result = execCommand('docker version');
       return !!result?.toString().match(/^Client: Docker Engine - Community/);
     } catch (err) {
-      this.logger.error(err, { msg: 'Error checking docker version' });
       return false;
     }
   }

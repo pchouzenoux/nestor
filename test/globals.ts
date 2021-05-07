@@ -1,11 +1,8 @@
-import { Logger } from 'pino';
+import { ConsoleLogger } from '../src/utils/ConsoleLogger';
 
-const testLogger: Logger = {
-  trace: jest.fn(),
-  debug: jest.fn(),
-  info: jest.fn(),
-  warn: jest.fn(),
+const testLogger: ConsoleLogger = {
+  log: jest.fn(),
   error: jest.fn(),
 };
 
-global['test-logger'] = testLogger;
+global['console-logger'] = testLogger;

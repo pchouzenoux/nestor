@@ -1,5 +1,4 @@
 import { Service } from 'typedi';
-import { InjectLogger, Logger } from '../helpers';
 import { ConsoleLogger } from '../utils/ConsoleLogger';
 import { execCommand } from '../utils/Shell';
 
@@ -16,10 +15,7 @@ export class GitService {
     /^(dev|develop)$/,
   ];
 
-  constructor(
-    @InjectLogger('GitService') private logger: Logger,
-    /* @Inject */ private consoleLogger: ConsoleLogger,
-  ) {}
+  constructor(/* @Inject */ private consoleLogger: ConsoleLogger) {}
 
   public clean(): void {
     if (!this.isGitDefine()) {
@@ -34,7 +30,6 @@ export class GitService {
       const result = execCommand('git version');
       return !!result?.toString().match(/^git version 2\.\d+\.\d+/);
     } catch (err) {
-      this.logger.error(err, { msg: 'Error checking git version' });
       return false;
     }
   }

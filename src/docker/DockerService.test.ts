@@ -10,7 +10,7 @@ describe('DockerService test suite', () => {
 
   beforeEach(() => {
     (execCommand as jest.Mock).mockReturnValue(Buffer.from(''));
-    service = new DockerService(global['test-logger']);
+    service = new DockerService(global['console-logger']);
   });
 
   afterEach(() => {

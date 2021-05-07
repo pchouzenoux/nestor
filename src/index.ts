@@ -5,21 +5,21 @@ import sourcemap from 'source-map-support';
 sourcemap.install();
 
 import Container from 'typedi';
-import { createLogger } from './helpers';
 import { NestorCli } from './NestorCli';
 
-const logger = createLogger('root');
-
 process.on('uncaughtException', (err) => {
-  logger.error({ msg: 'UncaughtException', err });
+  // eslint-disable-next-line no-console
+  console.error({ msg: 'UncaughtException', err });
 });
 
 process.on('unhandledRejection', (err) => {
-  logger.error({ msg: 'UnhandledRejection', err });
+  // eslint-disable-next-line no-console
+  console.error({ msg: 'UnhandledRejection', err });
 });
 
 process.on('SIGINT', () => {
-  logger.error('SIGINT recieved, kill the app');
+  // eslint-disable-next-line no-console
+  console.error('SIGINT recieved, kill the app');
   process.exit();
 });
 

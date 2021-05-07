@@ -10,7 +10,7 @@ describe('GitService test suite', () => {
 
   beforeEach(() => {
     (execCommand as jest.Mock).mockReturnValue(Buffer.from(''));
-    service = new GitService(global['test-logger']);
+    service = new GitService(global['console-logger']);
   });
 
   afterEach(() => {
