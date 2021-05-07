@@ -1,5 +1,5 @@
 {
-  "name": "nestor",
+  "name": "nestor-cli",
   "version": "0.0.1",
   "description": "Nestor buttler is here to help you !",
   "main": "lib/index.js",
@@ -13,7 +13,8 @@
     "start": "yarn run build:live",
     "build": "rm -rf lib/ && tsc -p ./tsconfig.build.json",
     "build:live": "tsnd --watch 'src/**/*.ts,config/**/*.*' src/index.ts git clean",
-    "lint": "eslint --ext .ts,.js ."
+    "lint": "eslint --ext .ts,.js .",
+    "prepublish": "yarn build"
   },
   "husky": {
     "hooks": {

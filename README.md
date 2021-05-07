@@ -5,8 +5,8 @@ Your personnal butler that help you to keep your laptop clean.
 
 ## How to install
 ```sh
-$ npm install -g nestor
-$ yarn add --global nestor
+$ npm install -g nestor-cli
+$ yarn global add nestor-cli
 ```
 ## How to use
 
