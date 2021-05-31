@@ -17,9 +17,9 @@ export class NestorCli {
     /* @Inject() */ private dockerService: DockerService,
   ) {}
 
-  public start(): void {
+  public async start(): Promise<void> {
     try {
-      const [context, command] = args.argv._;
+      const [context, command] = (await args.argv)._;
       this.run(context as Context, command as string);
     } catch (err) {
       this.consoleLogger.error(err.message);

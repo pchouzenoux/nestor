@@ -1,6 +1,6 @@
 {
   "name": "nestor-cli",
-  "version": "0.0.1",
+  "version": "0.0.2",
   "description": "Nestor buttler is here to help you !",
   "main": "lib/index.js",
   "bin": {
