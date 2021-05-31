@@ -14,13 +14,10 @@
     "build": "rm -rf lib/ && tsc -p ./tsconfig.build.json",
     "build:live": "tsnd --watch 'src/**/*.ts,config/**/*.*' src/index.ts git clean",
     "lint": "eslint --ext .ts,.js .",
-    "prepublish": "yarn build"
-  },
-  "husky": {
-    "hooks": {
-      "pre-commit": "yarn lint --fix",
-      "pre-push": "yarn test"
-    }
+    "prepublish": "yarn build",
+    "prepublishOnly": "pinst --disable",
+    "postinstall": "husky install",
+    "postpublish": "pinst --enable"
   },
   "dependencies": {
     "chalk": "^4.1.1",
@@ -28,26 +25,27 @@
     "reflect-metadata": "^0.1.13",
     "source-map-support": "^0.5.19",
     "typedi": "^0.10.0",
-    "typescript": "^4.1.3",
+    "typescript": "^4.3.2",
     "yargs": "^17.0.1"
   },
   "devDependencies": {
     "@types/chalk": "^2.2.0",
     "@types/jest": "^26.0.19",
-    "@types/node": "^15.0.2",
-    "@types/yargs": "^16.0.1",
-    "@typescript-eslint/eslint-plugin": "^4.22.1",
-    "@typescript-eslint/parser": "^4.22.1",
-    "eslint": "^7.17.0",
+    "@types/node": "^15.6.1",
+    "@types/yargs": "^17.0.0",
+    "@typescript-eslint/eslint-plugin": "^4.25.0",
+    "@typescript-eslint/parser": "^4.25.0",
+    "eslint": "^7.27.0",
     "eslint-config-airbnb-base": "^14.2.1",
     "eslint-config-prettier": "^8.3.0",
-    "eslint-plugin-import": "^2.22.1",
+    "eslint-plugin-import": "^2.23.4",
     "eslint-plugin-prettier": "^3.3.1",
-    "husky": "^4.3.8",
-    "jest": "^26.6.3",
-    "prettier": "^2.2.1",
-    "ts-jest": "^26.5.6",
-    "ts-node": "^9.1.1",
+    "husky": "^6.0.0",
+    "jest": "^27.0.3",
+    "pinst": "^2.1.6",
+    "prettier": "^2.3.0",
+    "ts-jest": "^27.0.2",
+    "ts-node": "^10.0.0",
     "ts-node-dev": "^1.1.1"
   }
 }
